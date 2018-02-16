@@ -4,14 +4,14 @@
     app
     >
       <v-toolbar-items>
-        <v-btn flat>Home</v-btn>
-        <v-btn flat>Scheduling</v-btn>
+        <v-btn flat to="/" >Home</v-btn>
+        <v-btn flat to="/scheduling" >Scheduling</v-btn>
       </v-toolbar-items>
     </v-toolbar>
+
     <v-content>
-      <v-container>
-        <router-view>
-        </router-view>
+      <v-container fluid>
+        <router-view></router-view>
       </v-container>
     </v-content>
   </v-app>
