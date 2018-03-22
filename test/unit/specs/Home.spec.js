@@ -1,4 +1,4 @@
-import Vue from 'vue'
+/* import Vue from 'vue'
 import Home from '@/components/Home'
 
 describe('Home.vue', () => {
@@ -6,4 +6,4 @@ describe('Home.vue', () => {
     const Constructor = Vue.extend(Home)
     const vm = new Constructor().$mount()
   })
-})
+}) */

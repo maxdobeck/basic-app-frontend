@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Scheduling</h1>
+    <h1>Schedules</h1>
   </v-container>
 </template>
 
