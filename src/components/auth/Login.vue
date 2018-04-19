@@ -2,7 +2,7 @@
 <v-container align-center>
   <v-form v-model="valid" ref="form" lazy-validation>
     <v-layout row justify-center>
-      <v-flex xs8>
+      <v-flex xs4>
         <v-text-field
           label="Email"
           v-model="email"
@@ -15,7 +15,7 @@
       </v-flex>
     </v-layout>
     <v-layout row justify-center>
-      <v-flex xs8>
+      <v-flex xs4>
         <v-text-field
           label="Password"
           v-model="password"
