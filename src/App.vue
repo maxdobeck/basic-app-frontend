@@ -6,7 +6,7 @@
     >
       <v-toolbar-items>
         <v-btn :ripple="false" flat to="/">Home</v-btn>
-        <v-btn :ripple="false" flat to="/schedules">Schedules</v-btn>
+        <v-btn :ripple="false" flat to="/schedules" v-if="loggedIn">Schedules</v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>
