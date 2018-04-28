@@ -1,4 +1,4 @@
- Travis CI Dev branch status is: [![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=dev)](https://travis-ci.org/maxdobeck/scheduler-frontend) 
+ Travis CI Dev branch: [![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=dev)](https://travis-ci.org/maxdobeck/scheduler-frontend) 
 # Scheduler-Frontend
 
 > Scheduling Is Hard frontend app.
