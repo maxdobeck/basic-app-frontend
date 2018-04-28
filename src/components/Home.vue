@@ -1,7 +1,7 @@
 <template>
-  <v-container>
-    <v-layout row wrap>
-      <v-flex xl12>
+  <v-container align-content-center>
+    <v-layout column>
+      <v-flex>
         <h1 id="homeTitle">Scheduling Is Hard</h1>
       </v-flex>
       <v-flex>
@@ -16,4 +16,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#homeTitle {
+  text-align: center;
+}
+#homeSub {
+  text-align: center;
+}
 </style>
