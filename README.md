@@ -1,4 +1,5 @@
-# scheduler-frontend
+[![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=prod)](https://travis-ci.org/maxdobeck/scheduler-frontend)
+# Scheduler-Frontend
 
 > Scheduling Is Hard frontend app.
 
