@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "8"
   - "9"
+  - "lts/*"
 
 cache: yarn
 
@@ -9,5 +10,18 @@ install:
   - yarn install
 
 script:
-- yarn lint
-- yarn build
+  - yarn lint
+  - yarn build
+
+jobs:
+include:
+  - stage: deploy to staging
+    node_js: "9"
+    script: skip
+    #deploy:
+      #provider: heroku
+      #on: master
+      #app:
+      #  master: secret-everglades-78583
+      #api_key:
+      #  secure: ""

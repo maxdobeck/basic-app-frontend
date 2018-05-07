@@ -12,7 +12,7 @@
         <v-card class="mb-5" height="200px">
           <v-form v-model="validName" ref="form" lazy-validation>
             <v-layout row justify-center>
-              <v-flex xs4>
+              <v-flex xs8>
                 <v-text-field
                   label="Name"
                   v-model="name"
@@ -31,7 +31,7 @@
         <v-card height="200px">
           <v-form v-model="validEmail" ref="form" lazy-validation>
             <v-layout row justify-center>
-              <v-flex xs4>
+              <v-flex xs8>
                 <v-text-field
                   label="Email"
                   v-model="email"
@@ -58,7 +58,7 @@
         <v-card height="200px">
           <v-form v-model="validPassword" ref="form">
             <v-layout row justify-center>
-              <v-flex xs4>
+              <v-flex xs8>
                 <v-text-field
                   label="Password"
                   v-model="pass"
