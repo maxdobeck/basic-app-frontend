@@ -1,26 +1,24 @@
 language: node_js
 node_js:
-  - "8"
-  - "9"
-
+- '8'
+- '9'
 cache: yarn
-
 install:
-  - yarn install
-
+- yarn install
 script:
-  - yarn lint
-  - yarn build
-
+- yarn lint
+- yarn build
 jobs:
   include:
-    - stage: deploy to staging
-      node_js: "9"
-      script: skip
-      deploy:
-        provider: heroku
-        on: master
-        app:
-          master: secret-everglades-78583
-        api_key:
-          secure: "otZGby3pmPPCg9z9FRrdpgBdusUsudJold78EtrAfh6t1IvuHzS6muvvMOn2EcYqc8JOB0GrYTi5K5Hs0v9eQDXrjzAMFXmcb0CINsB97yNr6LABToTsVJU248ztwtqokkf7mx9XNhXmaRWZZRHnURHFwN2BJbVI7s2PI1N+z0AAc5yb4G291IuZQWvb2j5L7kmHrLxL9tfyDSQnPe+2AtTJpCuuuRrke4G08UIWBsH/qBsxFgWcbgq1L4L+Kiv7VwAR+C3Nn+AR3fugbexkr2orhBj4R/6vqc5UE86I/KpgosH/eYuZBaKyWdxzC1WAb6WIhCMR492GQLOmq/XlfcdFsu1aRQo1qSfn0LlWPbMPy3NeKLqr+mRfrRBn9vP2DaS/L+3mXjG/7m1s+Ca70MlCHcw+LrGKyJjII2HDpqJUiBNMrPgcJC/nMd6WBwFth1HBfKl9SPHV3irE9cXhQfHMydO2Bp/y36Lir2944r9g5wJFbhiILX8dd1QiFfr6vel7MIbVhLTcQe5D3rzGemqpvlpfKIxH4e/Q7TnwMTLWhyGApp/Y2R41AASL8552CHqnJnj0VhxVDIawuQNwanS+9/W40Z8f6uFJ+ol8uKndbzy0ctqZDfzx9IubgkF77IMHrOWq/ZQ3XU6keRZr8rkmXkscJjwAa+Ya/7zoeso="
+  - stage: deploy to staging
+    node_js: '9'
+    script: skip
+    deploy:
+      provider: heroku
+      on: master
+      app:
+        master: secret-everglades-78583
+      api_key: 
+deploy:
+  api_key:
+    secure: iQFw6d3bhO8o7um9hHOOClFrAIwCi6gxO8S85vFVM1lolVFEr5G109vY/K+F0/bQY1VtD8cdIOIMkX+B7J7zsmCBtkGq9lv/JOK9ezvDlnvGlCjYJCmBEIgIqFsF/4Uk21oHB+Al9hKGX2UZNREQlifx0Cjs74h/PEOaZ3Rm9+wKkvvpLSZxHv3C7APP2MxrdNJwuT2Z1BYWTEThz5EfPHbddqMGlDXlSZncCk3MnW9t1Owq59sE9pDOgztl3mvYYUDlNnThbZcQcL+eqcCrbulnl7vCddmie+vEDEFocRL0tZasGUV9SNKkBBO+i5Z1tBAFXPqxXUGhNL+6GOSwdcYHFXJ9suWB6ejjVe27MNGXL2LZjaiJB6COd3yfNd5OljD/kbw+qaulgwptGJO044sMtj+KiApbkTTioo+qmT2NrCqF5eqp1zKfJM8J77kLTfnpRNxC+4yPvbmayq9QbceIXh+lYc4zOryzuCGlsZEkoC3nUrWrn4ftfF8+kKQj2zsmkumGS6NJNhziU5yxyXzZ+kfg8cLwNQ7DIYU6ECOFqPsLRKKD9oK5lxazUZC0N6S33/xrsaeV41o3gdQQh7LKJ27OJaFfXuxUin2rK9LG5TxcwfeBADfPUbXqZvzqSin6jMhvlx7EeIwvkeoHtv7PSt5xM0kgP63PU9e5TwI=
