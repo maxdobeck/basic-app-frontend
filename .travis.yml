@@ -18,10 +18,10 @@ include:
   - stage: deploy to staging
     node_js: "9"
     script: skip
-    deploy:
-      provider: heroku
-      on: master
-      app:
-        master: secret-everglades-78583
-      api_key:
-        secure: ""
+    #deploy:
+      #provider: heroku
+      #on: master
+      #app:
+      #  master: secret-everglades-78583
+      #api_key:
+      #  secure: ""
