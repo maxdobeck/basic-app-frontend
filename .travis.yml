@@ -15,7 +15,7 @@ jobs:
     script: skip
     deploy:
       provider: heroku
-      on: master
+      on: dev
       app:
         master: secret-everglades-78583
       api_key:
