@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '8'
-- '9'
+- '10'
 cache: yarn
 install:
 - yarn install
@@ -11,7 +11,7 @@ script:
 jobs:
   include:
   - stage: deploy to staging
-    node_js: '9'
+    node_js: '8'
     script: skip
     deploy:
       provider: heroku
