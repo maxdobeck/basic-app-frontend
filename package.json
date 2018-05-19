@@ -5,10 +5,11 @@
   "author": "Max Dobeck",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "start": "node server.js",
-    "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "clean": "rm -rf dist/**/*",
+    "dev": "node build/dev-server.js",
+    "start": "node server/server.js",
+    "build": "node build/build.js",
     "heroku-postbuild": "yarn build"
   },
   "dependencies": {
