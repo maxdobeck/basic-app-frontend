@@ -10,7 +10,7 @@ script:
 - yarn build
 jobs:
   include:
-  - stage: deploy to staging
+  - stage: deploy to dev
     node_js: '8'
     script: skip
     deploy:
