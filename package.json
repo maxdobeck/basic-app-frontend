@@ -5,7 +5,7 @@
   "author": "Max Dobeck",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "lint": "eslint --ext .js,.vue server src",
     "clean": "rm -rf dist/**/*",
     "dev": "node build/dev-server.js",
     "prod": "yarn clean && yarn lint &&  yarn build && yarn start",
@@ -14,6 +14,7 @@
     "heroku-postbuild": "yarn build"
   },
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-validator": "^5.2.0",
     "vue": "^2.5.2",

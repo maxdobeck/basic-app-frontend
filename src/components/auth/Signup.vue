@@ -136,11 +136,12 @@ export default {
   },
   methods: {
     validateSignup: function (e) {
-      fetch(apiURL + encodeURIComponent('?name=' + this.name + '&email=' + this.email + '&password=' + this.pass))
+      fetch(apiURL + encodeURIComponent('?name=' + this.name + '&email=' + this.email + '&password=' + this.pass), { method: 'POST' })
         .then(res => res.json())
+        .then(res => console.log(res.errors))
         .then(res => {
-          if (res.error) {
-            this.errors.push(res.error)
+          if (res.errors) {
+            this.errors.push(res.errors)
           } else {
             // redirect to signup URL and save user values to vuex store
             this.errors = []
