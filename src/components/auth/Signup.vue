@@ -94,6 +94,7 @@
 <script>
 export default {
   data () {
+    const apiURL = 'https://localhost:3030/validate/signup'
     return {
       el: 0,
       p1: true,

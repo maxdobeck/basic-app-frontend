@@ -6,7 +6,7 @@ const port = process.env.PORT
 
 app.use(express.static(path.join(__dirname, 'dist')))
 
-app.post("/validate/signup", [
+app.get("/validate/signup",/* [
   check('name').isAlphanumeric(),
   check('email').isEmail(),
   check('password').isLength({ min: 15 }),
@@ -17,7 +17,10 @@ app.post("/validate/signup", [
     }
     else {
       return res.status(200)
-    }
+    }*/
+  function(req,res) {
+    console.log(req.query)
+    res.json({ message: 'Hello' })
 })
 
 app.listen(port, () => console.log('Listening on port', port))
