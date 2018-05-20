@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'dist')))
 app.get("/validate/signup",/* [
   check('name').isAlphanumeric(),
   check('email').isEmail(),
-  check('password').isLength({ min: 15 }),
+  check('password').isLength({ min: 10 }),
   ], function(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
