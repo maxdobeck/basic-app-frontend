@@ -16,6 +16,7 @@ app.get("/validate/signup", [
       return res.status(422).json({ errors: errors.array() })
     }
     else {
+      console.log("response sent!", req.query)
       return res.status(200).json({ errors: errors.array() })
     }
 })

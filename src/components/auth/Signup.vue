@@ -10,7 +10,7 @@
     <v-stepper-items>
       <v-stepper-content step="1">
         <v-card class="mb-5" height="300px">
-          <v-form v-model="validName" ref="form" lazy-validation>
+          <v-form v-model="validName" ref="form" lazy-validation v-on:submit.prevent>
             <v-layout row justify-center>
               <v-flex xs8>
                 <v-text-field
@@ -29,7 +29,7 @@
 
       <v-stepper-content step="2">
         <v-card height="300px">
-          <v-form v-model="validEmail" ref="form" lazy-validation>
+          <v-form v-model="validEmail" ref="form" lazy-validation v-on:submit.prevent>
             <v-layout row justify-center>
               <v-flex xs8>
                 <v-text-field
@@ -56,7 +56,7 @@
 
       <v-stepper-content step="3">
         <v-card height="300px">
-          <v-form v-model="validPassword" ref="form">
+          <v-form v-model="validPassword" ref="form" v-on:submit.prevent>
             <v-layout row justify-center>
               <v-flex xs8>
                 <v-text-field
@@ -89,7 +89,7 @@
             </v-layout>
           </v-form>
         </v-card>
-        <v-btn color="primary" :disabled="!validPassword" @click.native="el = 1">Submit</v-btn>
+        <v-btn color="primary" :disabled="!validPassword" @click.native="validateSignup">Submit</v-btn>
         <v-btn flat  @click.native="el = 2">Back</v-btn>
       </v-stepper-content>
     </v-stepper-items>
@@ -97,8 +97,7 @@
 </template>
 
 <script>
-// validation api
-// const apiURL = 'https://localhost:3030/validate/signup'
+const apiURL = 'http://localhost:3131/validate/signup'
 export default {
   data () {
     return {
@@ -132,11 +131,22 @@ export default {
         v => v === this.pass || 'Passwords must match'
       ],
       errors: [],
-      badDataAlert: true
+      badDataAlert: false
     }
   },
   methods: {
-    // add validateSingup api call and response catch here
+    validateSignup: function (e) {
+      fetch(apiURL + encodeURIComponent('?name=' + this.name + '&email=' + this.email + '&password=' + this.pass))
+        .then(res => res.json())
+        .then(res => {
+          if (res.error) {
+            this.errors.push(res.error)
+          } else {
+            // redirect to signup URL and save user values to vuex store
+            this.errors = []
+          }
+        })
+    }
   }
 }
 </script>
