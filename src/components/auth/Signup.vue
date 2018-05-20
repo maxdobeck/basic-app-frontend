@@ -92,9 +92,9 @@
 </template>
 
 <script>
+const apiURL = 'https://localhost:3030/validate/signup'
 export default {
   data () {
-    const apiURL = 'https://localhost:3030/validate/signup'
     return {
       el: 0,
       p1: true,
@@ -126,6 +126,9 @@ export default {
         v => v === this.pass || 'Passwords must match'
       ]
     }
+  },
+  methods: {
+    // add validateSingup api call and response catch here
   }
 }
 </script>
