@@ -14,6 +14,7 @@
     "heroku-postbuild": "yarn build"
   },
   "dependencies": {
+    "connect-history-api-fallback": "^1.5.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-validator": "^5.2.0",
@@ -35,7 +36,6 @@
     "chai": "^4.1.2",
     "chalk": "^2.4.1",
     "chromedriver": "^2.33.1",
-    "connect-history-api-fallback": "^1.4.0",
     "copy-webpack-plugin": "^4.1.1",
     "cross-env": "^5.0.5",
     "cross-spawn": "^5.1.0",
