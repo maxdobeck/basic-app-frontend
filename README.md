@@ -1,13 +1,10 @@
- Travis CI Dev branch: [![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=dev)](https://travis-ci.org/maxdobeck/scheduler-frontend) 
-# Scheduler-Frontend
+# scheduler-frontend
 
-> Scheduling Is Hard frontend app.
+> Scheduler frontend
 
 ## Build Setup
 
 ``` bash
-# Use yarn or npm
-
 # install dependencies
 npm install
 
@@ -21,4 +18,4 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
