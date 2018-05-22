@@ -1,6 +1,7 @@
-# scheduler-frontend
+[![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=dev)](https://travis-ci.org/maxdobeck/scheduler-frontend)
+# Scheduler-Frontend
 
-> Scheduler frontend
+> Scheduling Is Hard frontend app.
 
 ## Build Setup
 
@@ -13,9 +14,6 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
