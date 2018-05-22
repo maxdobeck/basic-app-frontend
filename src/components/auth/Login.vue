@@ -9,7 +9,6 @@
           :rules="emailRules"
           required
           autofocus
-          
         >
         </v-text-field>
       </v-flex>

@@ -17,7 +17,7 @@
                   label="Name"
                   v-model="name"
                   :rules="nameRules"
-                  required                  
+                  required
                 >
                 </v-text-field>
               </v-flex>
@@ -36,14 +36,14 @@
                   label="Email"
                   v-model="email"
                   :rules="nameRules"
-                  required                  
+                  required
                 >
                 </v-text-field>
                 <v-text-field
                   label="Retype your email"
                   v-model="email2"
                   :rules="emailConfirmRules"
-                  required                  
+                  required
                 >
                 </v-text-field>
               </v-flex>
@@ -67,7 +67,7 @@
                   required
                   :append-icon="p1 ? 'visibility' : 'visibility_off'"
                   :append-icon-cb="() => (p1 = !p1)"
-                  :type="p1 ? 'password' : 'text'"                  
+                  :type="p1 ? 'password' : 'text'"
                 >
                 </v-text-field>
                 <v-text-field
@@ -93,7 +93,7 @@
         <v-btn flat  @click.native="el = 2">Back</v-btn>
       </v-stepper-content>
     </v-stepper-items>
-  </v-stepper>  
+  </v-stepper>
 </template>
 
 <script>
