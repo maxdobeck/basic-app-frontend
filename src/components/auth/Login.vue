@@ -20,9 +20,6 @@
           v-model="password"
           :rules="passwordRules"
           required
-          :append-icon="e3 ? 'visibility' : 'visibility_off'"
-          :append-icon-cb="() => (e3 = !e3)"
-          :type="e3 ? 'password' : 'text'"
         >
         </v-text-field>
       </v-flex>
@@ -52,7 +49,6 @@ export default {
       passwordRules: [
         v => !!v || 'Password is required'
       ],
-      e3: true,
       valid: false
     }
   }
