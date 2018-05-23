@@ -65,9 +65,6 @@
                   :rules="passRules"
                   :counter="10"
                   required
-                  :append-icon="pass1Visible ? 'visibility' : 'visibility_off'"
-                  :append-icon-cb="() => (pass1Visible = !pass1Visible)"
-                  :type="pass1Visible ? 'password' : 'text'"
                 >
                 </v-text-field>
                 <v-text-field
@@ -76,9 +73,6 @@
                   :rules="passConfirmRules"
                   :counter="10"
                   required
-                  :append-icon="pass2Visible ? 'visibility' : 'visibility_off'"
-                  :append-icon-cb="() => (pass2Visible = !pass2Visible)"
-                  :type="pass2Visible ? 'password' : 'text'"
                   >
                 </v-text-field>
                 <v-alert v-model="badDataAlert" type="error">
@@ -102,8 +96,6 @@ export default {
   data () {
     return {
       el: 0,
-      pass1Visible: true,
-      pass2Visible: true,
       validName: false,
       name: '',
       nameRules: [
