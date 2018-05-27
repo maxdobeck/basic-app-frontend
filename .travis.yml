@@ -29,9 +29,10 @@ jobs:
       on: dev
       access_key_id: "AKIAIMTCJ264OCT3MDRA"
       secret_access_key: 
-        secure: "Ai5dgNtGnkaBxJPh5Trp7sRBVLIpC2MAmXpdg+6oyYv+BWiuuO+rUC4dCkuLWrbRVK/FiuBOAev5UHR4qPcXfv4bu5xplk5UC8bZVxfJcG0zYbaJC/kP/BcYtjiSLLtOIz1HWFsUICsCYSx14X2oXepvsWBQmMFTvFJupBGi+gf1x7BUYeRkAU03DfRZ8swVydLn/vamTVU0i9LHew+Kyb7EPJZwDc3etunWqf+60jNPWDdgZsunK9uPl5/bjQ+VfEp2vP3rJHIt97h+I97w72kd+8C0NWNry5d8G8M0xheMra/4YYu7SSqbp9ZEFRYaHNROi8sH8dYFVAt4nC8tvzK87IvP0dFWnojWJPpj2ZrQcqjrCLEP+tccs8jYKShPtThOo1C9Zu4kMYl68KGeZ958L8yYnMa68zXHT69JFIqhjqnNA6ne1PHkV/QN26+Q4xATHODu7FhVt7UL/PM2xfjGrm9DmuOXCkA1Eqqy5GiVBR1CvOzkQuPJz/OJOy1613RxNBFW21j5Hr3+9FG4jPaueJ8159U6dH+zZxBMGED6MRvy0jgi2Hch04DumlnEBOqtNFLAh5t64QJoLhJeaj/TaeZDhpOFsdMNKGApZJ70ZXAxts2rrsXqHwZiiy8jGS/NzY3qTTHjVcYu3CWgT1bzBMK1FjK2f6/frDtFNyo="
+        secure: "C0uPZJMMjIEPkeI0IrQ3Jp9yrHxiCXCfjfFRzALV2BDYO1VSUOi907I1FxIhLL5UNusJQlcwGePLPMJ+Lu3k8aldvc+BUClmWfXeeqz/pk2qTU6CEf03px+6izzJx2FWxZx8pZ6q2LZC6yiIZCgmPvC2cjYRoLrsehML+UHJ9nox2l44wPcWBMCXBSwsIGF3CjSMs+P5cMdu0qC7sddZ4RGl/Y403eP43imW2IYdJ9BvMSTwNBueMeTySVQcN6KzJiwCd/rIVI+9DEvQI/qk4jUm6qgkCMKAOAJZ+HacAuHU6j80xf+U3+aV1Dkbq5SD770S6Y02dxLlXAoMcEyWskz1bugfqW9Mp7hlp//fZBrGeHNF9wTFLAGfDefabYWj6xn4nNrjbJaqWgOwY8j4g/G2Kl58c2DJ54w7ijiSlCQDNrFkwTd+XMZ2/7BmqEF01eJOwhigsu+nzJWyS31O8K5Dl4IB2wGSasUs5p94t+y87LqcGfSipN4jHt9HLCfHOV1l5LCM81sgjdiJtpi8qaMdsWF7olnHbWciw1E7L7Xz24Mwxtrba2WIaZqXh2QIy18NSJcfRSaI9jCXkVTRNOzgD3IVPHcmc7HYf/X5CU8nUJA3zSXNCzKGrTfnvbTR8Np+XJLQKPhq+6hIa6O/1lnBxHZqI+eYEhl3f4I8/nY="
       # deploy to http://s3-sih-test.s3-website-us-west-1.amazonaws.com
       bucket: "s3-sih-test"
       region: "us-west-1"
       skip_cleanup: true
       local_dir: dist
+      cache_control: max-age=604800
