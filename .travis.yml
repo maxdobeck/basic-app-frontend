@@ -35,4 +35,4 @@ jobs:
       region: "us-west-1"
       skip_cleanup: true
       local_dir: dist
-      cache_control: max-age=604800
+      cache_control: "max-age=86400"
