@@ -17,7 +17,6 @@
                   label="Name"
                   v-model="name"
                   :rules="nameRules"
-                  required
                 >
                 </v-text-field>
               </v-flex>
@@ -36,14 +35,12 @@
                   label="Email"
                   v-model="email"
                   :rules="nameRules"
-                  required
                 >
                 </v-text-field>
                 <v-text-field
                   label="Retype your email"
                   v-model="email2"
                   :rules="emailConfirmRules"
-                  required
                 >
                 </v-text-field>
               </v-flex>
@@ -64,15 +61,15 @@
                   v-model="pass"
                   :rules="passRules"
                   :counter="10"
-                  required
+                  :type="'password'"
                 >
                 </v-text-field>
                 <v-text-field
-                  label="Please type your password again"
+                  label="Confirm your password"
                   v-model="pass2"
                   :rules="passConfirmRules"
                   :counter="10"
-                  required
+                  :type="'password'"
                   >
                 </v-text-field>
                 <v-alert v-model="badDataAlert" type="error">

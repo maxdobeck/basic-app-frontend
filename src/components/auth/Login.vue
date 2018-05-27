@@ -19,6 +19,7 @@
           label="Password"
           v-model="password"
           :rules="passwordRules"
+          :type="'password'"
           required
         >
         </v-text-field>
