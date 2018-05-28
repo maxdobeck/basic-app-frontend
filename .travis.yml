@@ -36,19 +36,19 @@ jobs:
       skip_cleanup: true
       local_dir: dist
       cache_control: "max-age=86400"
-  #- stage: deploy to production
-  #  deploy:
-  #    node_js: '8'
-  #    script:
-  #    - yarn build
-  #    provider: s3
-  #    on: prod
-  #    access_key_id: "AWS Access IAM Access Key"
-  #    secret_access_key: 
-  #      secure: "travis secure <awssecret access key>"
-  #    # deploy to http://s3-sih-test.s3-website-us-west-1.amazonaws.com
-  #    bucket: "s3-sih-test"
-  #    region: "us-west-1"
-  #    skip_cleanup: true
-  #    local_dir: dist
-  #    cache_control: "max-age=86400"
+  - stage: deploy to production
+    deploy:
+      node_js: '8'
+      script:
+      - yarn build
+      provider: s3
+      on: prod
+      access_key_id: "AWS Access IAM Access Key"
+      secret_access_key: 
+        secure: "travis secure <awssecret access key>"
+      # deploy to http://s3-sih-test.s3-website-us-west-1.amazonaws.com
+      bucket: "s3-sih-test"
+      region: "us-west-1"
+      skip_cleanup: true
+      local_dir: dist
+      cache_control: "max-age=86400"
