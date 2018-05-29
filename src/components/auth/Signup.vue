@@ -88,7 +88,7 @@
 </template>
 
 <script>
-const apiURL = 'http://localhost:3131/validate/signup'
+const apiURL = 'http://localhost:3000/validate/signup'
 export default {
   data () {
     return {

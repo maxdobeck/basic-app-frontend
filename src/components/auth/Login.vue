@@ -27,7 +27,7 @@
     </v-layout>
     <v-layout row justify-center>
       <v-btn
-        @click="submit"
+        @click="loginMember"
         :disabled="!valid"
       >
         Login
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+const apiURL = 'http://localhost:3000/login'
 export default {
   data () {
     return {
@@ -51,6 +52,23 @@ export default {
         v => !!v || 'Password is required'
       ],
       valid: false
+    }
+  },
+  methods: {
+    loginMember: function (e) {
+      fetch(apiURL, {
+        method: 'POST',
+        body: JSON.stringify({email: this.email, password: this.password})
+      })
+        .then(response => response.json())
+        .then(response => {
+          if (response.errors) {
+            this.errors.push(response.errors)
+          } else {
+            // redirect to signup URL and save user values to vuex store
+            this.errors = []
+          }
+        })
     }
   }
 }

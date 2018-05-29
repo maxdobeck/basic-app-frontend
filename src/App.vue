@@ -47,4 +47,7 @@ export default {
   #logInOut {
     margin-right: 5%;
   }
+  #navbar {
+    background-color: white;
+  }
 </style>
