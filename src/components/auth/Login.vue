@@ -58,6 +58,7 @@ export default {
     loginMember: function (e) {
       fetch(apiURL, {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({email: this.email, password: this.password})
       })
         .then(response => response.json())
