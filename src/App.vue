@@ -24,17 +24,22 @@
 </template>
 
 <script>
+const apiURL = 'http://localhost:3000/csrftoken'
 export default {
   data () {
     return {
-      loggedIn: false
+      loggedIn: false,
+      errors: []
     }
   },
   name: 'App',
-  created: function () {
-    // `this` points to the view model instance
-    console.log('We\'re mounted baby')
-  }
+  created:
+    function () {
+      fetch(apiURL, {
+        method: 'GET'
+      })
+        .then(response => console.log(response.headers.get('X-CSRF-Token')))
+    }
 }
 </script>
 
