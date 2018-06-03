@@ -60,9 +60,9 @@ export default {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'X-CSRF-Token': '/wGWIWju0p9/BKx3kVZM8hN/JZarngl98ztm9bNLayHkyRCKiZPOjJ34ju9vbOtGn/AVRT5bOeC1QlcLoZv40Q=='
+          'X-CSRF-Token': 'oEyCpkMglHlI4h9h8T0J6ido+8SRtk+w2+JK54RZKkO7hAQNol2IaqoePfkPB65eq+fLFwRzfy2dm3sZlom5sw=='
         },
-        body: JSON.stringify({email: this.email, password: this.password, csrf_token: '/wGWIWju0p9/BKx3kVZM8hN/JZarngl98ztm9bNLayHkyRCKiZPOjJ34ju9vbOtGn/AVRT5bOeC1QlcLoZv40Q=='})
+        body: JSON.stringify({email: this.email, password: this.password})
       })
         .then(response => response.json())
         .then(response => {
