@@ -59,7 +59,10 @@ export default {
       fetch(apiURL, {
         method: 'POST',
         credentials: 'include',
-        body: JSON.stringify({email: this.email, password: this.password})
+        headers: {
+          'X-CSRF-Token': '/wGWIWju0p9/BKx3kVZM8hN/JZarngl98ztm9bNLayHkyRCKiZPOjJ34ju9vbOtGn/AVRT5bOeC1QlcLoZv40Q=='
+        },
+        body: JSON.stringify({email: this.email, password: this.password, csrf_token: '/wGWIWju0p9/BKx3kVZM8hN/JZarngl98ztm9bNLayHkyRCKiZPOjJ34ju9vbOtGn/AVRT5bOeC1QlcLoZv40Q=='})
       })
         .then(response => response.json())
         .then(response => {
