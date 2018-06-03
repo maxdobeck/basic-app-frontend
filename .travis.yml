@@ -8,6 +8,13 @@ install:
 script:
 - yarn lint
 - yarn build
+
+stages:
+  - name: deploy to s3 dev
+    if: branch = dev
+  - name: deploy to production
+    if: branch = prod
+
 jobs:
   include:
   #- stage: deploy to dev
@@ -38,11 +45,11 @@ jobs:
       cache_control: "max-age=86400"
   - stage: deploy to production
     deploy:
+      on: prod
       node_js: '8'
       script:
       - yarn build
       provider: s3
-      on: prod
       access_key_id: "AWS Access IAM Access Key"
       secret_access_key: 
         secure: "travis secure <awssecret access key>"
