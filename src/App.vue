@@ -30,7 +30,11 @@ export default {
       loggedIn: false
     }
   },
-  name: 'App'
+  name: 'App',
+  created: function () {
+    // `this` points to the view model instance
+    console.log('We\'re mounted baby')
+  }
 }
 </script>
 
