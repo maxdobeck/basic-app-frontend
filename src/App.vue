@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 const apiURL = 'http://localhost:3000/csrftoken'
 export default {
   data () {
@@ -32,13 +33,22 @@ export default {
       errors: []
     }
   },
+  methods: {
+    setCSRFToken (token) {
+      this.$store.dispatch('setCSRFToken', token)
+    }
+  },
+  computed: mapGetters({
+    token: 'curCSRFToken'
+  }),
   name: 'App',
   created:
     function () {
       fetch(apiURL, {
         method: 'GET'
       })
-        .then(response => console.log(response.headers.get('X-CSRF-Token')))
+        // .then(response => console.log(response.headers.get('X-CSRF-Token')))
+        .then(response => this.setCSRFToken(response.headers.get('X-CSRF-Token')))
     }
 }
 </script>

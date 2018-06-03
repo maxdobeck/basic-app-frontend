@@ -3,22 +3,32 @@
 *  Module for monitoring and managing users
 */
 
-export const members = {
-  state: {
-    loggedIn: false
-  },
+  const state = {
+    loggedIn: false,
+    csrf_token: ''
+  }
   
-  /*,
-    mutations: {
+  const mutations = {
+    setCSRFToken(state, t) {
+      state.csrf_token = t
+    }
+  }
 
-  },
-
-  actions: {
-
-  },*/
+  const actions = {
+    setCSRFToken ({commit, state}, token) {
+      commit('setCSRFToken', token)
+    }
+  }
   
-  getters: {
-     logInStatus: state => state.loggedIn
+  const getters = {
+     logInStatus: state => state.loggedIn,
+     curCSRFToken: state => state.csrf_token
     
   }
+
+export default {
+  state,
+  mutations,
+  actions,
+  getters
 }
