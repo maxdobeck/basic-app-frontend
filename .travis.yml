@@ -9,12 +9,6 @@ script:
 - yarn lint
 - yarn build
 
-stages:
-  - name: deploy to s3 dev
-    if: branch = dev
-  - name: deploy to production
-    if: branch = prod
-
 jobs:
   include:
   #- stage: deploy to dev
