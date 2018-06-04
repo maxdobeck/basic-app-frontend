@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 const apiURL = 'http://localhost:3000/login'
 export default {
   data () {
@@ -60,7 +61,7 @@ export default {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'X-CSRF-Token': 'oEyCpkMglHlI4h9h8T0J6ido+8SRtk+w2+JK54RZKkO7hAQNol2IaqoePfkPB65eq+fLFwRzfy2dm3sZlom5sw=='
+          'X-CSRF-Token': this.token
         },
         body: JSON.stringify({email: this.email, password: this.password})
       })
@@ -74,7 +75,10 @@ export default {
           }
         })
     }
-  }
+  },
+  computed: mapGetters({
+    token: 'curCSRFToken'
+  })
 }
 </script>
 

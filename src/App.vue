@@ -45,7 +45,8 @@ export default {
   created:
     function () {
       fetch(apiURL, {
-        method: 'GET'
+        method: 'GET',
+        credentials: 'include'
       })
         // .then(response => console.log(response.headers.get('X-CSRF-Token')))
         .then(response => this.setCSRFToken(response.headers.get('X-CSRF-Token')))
