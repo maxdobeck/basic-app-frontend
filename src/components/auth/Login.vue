@@ -72,12 +72,17 @@ export default {
           } else {
             // redirect to signup URL and save user values to vuex store
             this.errors = []
+            this.logMemberIn()
           }
         })
+    },
+    logMemberIn () {
+      this.$store.dispatch('logMemberIn')
     }
   },
   computed: mapGetters({
-    token: 'curCSRFToken'
+    token: 'curCSRFToken',
+    loggedIn: 'logInStatus'
   })
 }
 </script>

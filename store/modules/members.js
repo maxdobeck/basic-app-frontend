@@ -11,12 +11,18 @@
   const mutations = {
     setCSRFToken(state, t) {
       state.csrf_token = t
+    },
+    logMemberIn(state) {
+      state.loggedIn = true
     }
   }
 
   const actions = {
     setCSRFToken ({commit, state}, token) {
       commit('setCSRFToken', token)
+    },
+    logMemberIn ({commit, state}) {
+      commit('logMemberIn')
     }
   }
   

@@ -29,7 +29,6 @@ const apiURL = 'http://localhost:3000/csrftoken'
 export default {
   data () {
     return {
-      loggedIn: false,
       errors: []
     }
   },
@@ -39,7 +38,8 @@ export default {
     }
   },
   computed: mapGetters({
-    token: 'curCSRFToken'
+    token: 'curCSRFToken',
+    loggedIn: 'logInStatus'
   }),
   name: 'App',
   created:
