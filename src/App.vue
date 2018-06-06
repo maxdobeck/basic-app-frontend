@@ -13,12 +13,16 @@
       <v-toolbar-items>
         <v-btn :ripple="false" flat raised to="/signup" v-if="!loggedIn" id="signup">Sign Up</v-btn>
         <v-btn :ripple="false" flat raised to="/login" v-if="!loggedIn" id="logInOut">Log In</v-btn>
-        <v-btn :ripple="false" flat raised to="/logout" v-if="loggedIn" id="logInOut">Log Out</v-btn>
+        <v-btn @click="logMemberOut" :ripple="false" flat raised to="/" v-if="loggedIn" id="logInOut">Log Out</v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
     <v-content>
-        <router-view></router-view>
+      <transition>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
     </v-content>
   </v-app>
 </template>
@@ -35,6 +39,10 @@ export default {
   methods: {
     setCSRFToken (token) {
       this.$store.dispatch('setCSRFToken', token)
+    },
+    logMemberOut () {
+      this.$router.push('/')
+      this.$store.dispatch('logMemberOut')
     }
   },
   computed: mapGetters({

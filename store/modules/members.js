@@ -14,6 +14,9 @@
     },
     logMemberIn(state) {
       state.loggedIn = true
+    },
+    logMemberOut(state) {
+      state.loggedIn = false
     }
   }
 
@@ -23,6 +26,9 @@
     },
     logMemberIn ({commit, state}) {
       commit('logMemberIn')
+    },
+    logMemberOut ({commit, state}) {
+      commit('logMemberOut')
     }
   }
   

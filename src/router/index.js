@@ -23,11 +23,7 @@ export default new Router({
   mode: 'history',
   routes: [
     { path: '/', name: 'Home', component: Home },
-    { path: '/schedules',
-      name: 'Schedules',
-      component: Schedules,
-      beforeEnter: checkAuth
-    },
+    { path: '/schedules', name: 'Schedules', component: Schedules, beforeEnter: checkAuth },
     { path: '/login', name: 'Login', component: Login },
     { path: '/logout', name: 'Logout', component: Logout },
     { path: '/signup', name: 'Signup', component: Signup }
