@@ -67,9 +67,11 @@ export default {
       })
         .then(response => response.json())
         .then(response => {
-          if (response.errors) {
-            this.errors.push(response.errors)
+          if (response.status !== 'OK') {
+            console.log(response)
+            this.errors = response.status
           } else {
+            console.log(response)
             // redirect to signup URL and save user values to vuex store
             this.errors = []
             this.logMemberIn()
