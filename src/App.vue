@@ -13,7 +13,7 @@
       <v-toolbar-items>
         <v-btn :ripple="false" flat raised to="/signup" v-if="!loggedIn" id="signup">Sign Up</v-btn>
         <v-btn :ripple="false" flat raised to="/login" v-if="!loggedIn" id="logInOut">Log In</v-btn>
-        <v-btn @click="logMemberOut" :ripple="false" flat raised to="/" v-if="loggedIn" id="logInOut">Log Out</v-btn>
+        <v-btn @click="logMemberOut" :ripple="false" flat raised v-if="loggedIn" id="logInOut">Log Out</v-btn>
       </v-toolbar-items>
     </v-toolbar>
 

@@ -73,7 +73,7 @@ export default {
             // redirect to signup URL and save user values to vuex store
             this.errors = []
             this.logMemberIn()
-            this.$router.push('/home')
+            this.$router.push('/')
           }
         })
     },
