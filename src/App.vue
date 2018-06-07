@@ -56,7 +56,6 @@ export default {
         method: 'GET',
         credentials: 'include'
       })
-        // .then(response => console.log(response.headers.get('X-CSRF-Token')))
         .then(response => this.setCSRFToken(response.headers.get('X-CSRF-Token')))
     }
 }
