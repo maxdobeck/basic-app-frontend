@@ -52,7 +52,8 @@ export default {
       passwordRules: [
         v => !!v || 'Password is required'
       ],
-      valid: false
+      valid: false,
+      errors: []
     }
   },
   methods: {
@@ -67,19 +68,24 @@ export default {
       })
         .then(response => response.json())
         .then(response => {
+          console.log(response)
           if (response['Status'] !== 'OK') {
-            console.log(response)
             this.errors = response['Status']
           } else {
             // redirect to signup URL and save user values to vuex store
+            console.log(response['ID'])
             this.errors = []
             this.logMemberIn()
+            this.setMemberId(response['ID'])
             this.$router.push('/')
           }
         })
     },
     logMemberIn () {
       this.$store.dispatch('logMemberIn')
+    },
+    setMemberId (memberId) {
+      this.$store.dispatch('setMemberId', memberId)
     }
   },
   computed: mapGetters({

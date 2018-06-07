@@ -5,7 +5,8 @@
 
   const state = {
     loggedIn: false,
-    csrf_token: ''
+    csrf_token: '',
+    memberId: ''
   }
   
   const mutations = {
@@ -17,6 +18,9 @@
     },
     logMemberOut(state) {
       state.loggedIn = false
+    },
+    setMemberId(state, id) {
+      state.memberId = id
     }
   }
 
@@ -29,12 +33,16 @@
     },
     logMemberOut ({commit, state}) {
       commit('logMemberOut')
+    },
+    setMemberId ({commit, state}, id) {
+      commit('setMemberId', id)
     }
   }
   
   const getters = {
      logInStatus: state => state.loggedIn,
-     curCSRFToken: state => state.csrf_token
+     curCSRFToken: state => state.csrf_token,
+     curMemberId: state => state.memberId
     
   }
 

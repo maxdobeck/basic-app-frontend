@@ -36,6 +36,7 @@ export default {
       errors: []
     }
   },
+  name: 'App',
   methods: {
     setCSRFToken (token) {
       this.$store.dispatch('setCSRFToken', token)
@@ -49,7 +50,6 @@ export default {
     token: 'curCSRFToken',
     loggedIn: 'logInStatus'
   }),
-  name: 'App',
   created:
     function () {
       fetch(apiURL, {
