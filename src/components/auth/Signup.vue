@@ -88,7 +88,8 @@
 </template>
 
 <script>
-const apiURL = 'http://localhost:3000/validate/signup'
+import { mapGetters } from 'vuex'
+const signupAPI = process.env.DEV_API
 export default {
   data () {
     return {
@@ -125,21 +126,34 @@ export default {
   },
   methods: {
     validateSignup: function (e) {
-      fetch(apiURL + encodeURIComponent('?name=' + this.name + '&email=' + this.email + '&password=' + this.pass), {
-        method: 'POST'
+      fetch(signupAPI + 'members', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'X-CSRF-Token': this.token
+        },
+        body: JSON.stringify({ name: this.name, email: this.email, email2: this.email2, password: this.pass, password2: this.pass2 })
       })
         .then(res => res.json())
-        .then(res => console.log(res.errors))
         .then(res => {
-          if (res.errors) {
-            this.errors.push(res.errors)
+          if (res['Status'] !== 'Member Created') {
+            this.errors.push(res['Errors'])
           } else {
-            // redirect to signup URL and save user values to vuex store
+            // redirect to welcome URL and save user values to vuex store
             this.errors = []
+            this.pass = ''
+            this.pass2 = ''
+            this.email = ''
+            this.email2 = ''
+            this.name = ''
+            this.$router.push('/welcome')
           }
         })
     }
-  }
+  },
+  computed: mapGetters({
+    token: 'curCSRFToken'
+  })
 }
 </script>
 

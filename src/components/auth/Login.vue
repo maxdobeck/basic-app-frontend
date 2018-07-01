@@ -58,6 +58,7 @@ export default {
   },
   methods: {
     loginMember: function (e) {
+      let self = this
       fetch(apiURL, {
         method: 'POST',
         credentials: 'include',
@@ -66,7 +67,10 @@ export default {
         },
         body: JSON.stringify({email: this.email, password: this.password})
       })
-        .then(response => response.json())
+        .then(function (response) {
+          self.setCSRFToken(response.headers.get('X-CSRF-Token'))
+          return response.json()
+        })
         .then(response => {
           console.log(response)
           if (response['Status'] !== 'OK') {
@@ -75,6 +79,7 @@ export default {
             // redirect to signup URL and save user values to vuex store
             console.log(response['ID'])
             this.errors = []
+            this.password = ''
             this.logMemberIn()
             this.setMemberId(response['ID'])
             this.$router.push('/')
@@ -86,6 +91,9 @@ export default {
     },
     setMemberId (memberId) {
       this.$store.dispatch('setMemberId', memberId)
+    },
+    setCSRFToken (token) {
+      this.$store.dispatch('setCSRFToken', token)
     }
   },
   computed: mapGetters({
