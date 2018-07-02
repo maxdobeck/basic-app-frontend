@@ -89,7 +89,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
-const signupAPI = process.env.DEV_API
+let api // Need to find a way to turn all this into a function
+if (process.env.NODE_ENV === 'test') {
+  api = process.env.TEST_API
+} else if (process.env.NODE_ENV === 'dev') {
+  api = process.env.DEV_API
+}
+const signupAPI = api
 export default {
   data () {
     return {
