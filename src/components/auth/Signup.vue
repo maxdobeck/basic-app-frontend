@@ -95,7 +95,7 @@ if (process.env.NODE_ENV === 'test') {
 } else if (process.env.NODE_ENV === 'dev') {
   api = process.env.DEV_API
 }
-const signupAPI = api + '/members'
+const signupAPI = api
 export default {
   data () {
     return {
@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     validateSignup: function (e) {
-      fetch(signupAPI + 'members', {
+      fetch(signupAPI + '/members', {
         method: 'POST',
         credentials: 'include',
         headers: {
