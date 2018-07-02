@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === 'test') {
 } else if (process.env.NODE_ENV === 'dev') {
   api = process.env.DEV_API
 }
-const apiURL = api+'/login'
+const apiURL = api + '/login'
 export default {
   data () {
     return {

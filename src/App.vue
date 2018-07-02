@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'test') {
 } else if (process.env.NODE_ENV === 'dev') {
   api = process.env.DEV_API
 }
-const apiURL =  api + '/csrftoken'
+const apiURL = api + '/csrftoken'
 export default {
   data () {
     return {
