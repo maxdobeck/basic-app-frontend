@@ -95,7 +95,7 @@ if (process.env.NODE_ENV === 'test') {
 } else if (process.env.NODE_ENV === 'dev') {
   api = process.env.DEV_API
 }
-const signupAPI = api
+const signupAPI = api + '/members'
 export default {
   data () {
     return {

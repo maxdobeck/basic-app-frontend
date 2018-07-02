@@ -29,7 +29,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
-const apiURL = 'http://localhost:3000/csrftoken'
+let api // Need to find a way to turn all this into a function
+if (process.env.NODE_ENV === 'test') {
+  api = process.env.TEST_API
+} else if (process.env.NODE_ENV === 'dev') {
+  api = process.env.DEV_API
+}
+const apiURL =  api + '/csrftoken'
 export default {
   data () {
     return {
