@@ -40,7 +40,7 @@
 <script>
 import { mapGetters } from 'vuex'
 let api // Need to find a way to turn all this into a function
-if (process.env.NODE_ENV === 'dev') {
+if (process.env.NODE_ENV === 'test') {
   api = 'http://localhost:3000/'
 } else {
   api = 'https://shielded-stream-75107.herokuapp.com/'
