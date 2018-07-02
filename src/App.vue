@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
   api = 'https://shielded-stream-75107.herokuapp.com/'
 }
-const apiURL = api + '/csrftoken'
+const apiURL = api + 'csrftoken'
 export default {
   data () {
     return {

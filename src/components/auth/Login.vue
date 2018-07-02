@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
   api = 'https://shielded-stream-75107.herokuapp.com/'
 }
-const apiURL = api + '/login'
+const apiURL = api + 'login'
 export default {
   data () {
     return {

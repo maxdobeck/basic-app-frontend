@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     validateSignup: function (e) {
-      fetch(signupAPI + '/members', {
+      fetch(signupAPI + 'members', {
         method: 'POST',
         credentials: 'include',
         headers: {
