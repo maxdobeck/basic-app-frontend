@@ -13,24 +13,57 @@
       <v-toolbar-items>
         <v-btn :ripple="false" flat raised to="/signup" v-if="!loggedIn" id="signup">Sign Up</v-btn>
         <v-btn :ripple="false" flat raised to="/login" v-if="!loggedIn" id="logInOut">Log In</v-btn>
-        <v-btn :ripple="false" flat raised to="/logout" v-if="loggedIn" id="logInOut">Log Out</v-btn>
+        <v-btn @click="logMemberOut" :ripple="false" flat raised v-if="loggedIn" id="logInOut">Log Out</v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
     <v-content>
-        <router-view></router-view>
+      <transition>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+let api // Need to find a way to turn all this into a function
+if (process.env.NODE_ENV === 'test') {
+  api = 'http://localhost:3000/'
+} else {
+  api = 'https://shielded-stream-75107.herokuapp.com/'
+}
+const apiURL = api + 'csrftoken'
 export default {
   data () {
     return {
-      loggedIn: false
+      errors: []
     }
   },
-  name: 'App'
+  name: 'App',
+  methods: {
+    setCSRFToken (token) {
+      this.$store.dispatch('setCSRFToken', token)
+    },
+    logMemberOut () {
+      this.$router.push('/')
+      this.$store.dispatch('logMemberOut')
+    }
+  },
+  computed: mapGetters({
+    token: 'curCSRFToken',
+    loggedIn: 'logInStatus'
+  }),
+  created:
+    function () {
+      fetch(apiURL, {
+        method: 'GET',
+        credentials: 'include'
+      })
+        .then(response => this.setCSRFToken(response.headers.get('X-CSRF-Token')))
+    }
 }
 </script>
 
@@ -46,5 +79,8 @@ export default {
   }
   #logInOut {
     margin-right: 5%;
+  }
+  #navbar {
+    background-color: white;
   }
 </style>

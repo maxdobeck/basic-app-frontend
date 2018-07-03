@@ -1,11 +1,11 @@
 <template>
   <v-stepper v-model="el" id="stepper">
     <v-stepper-header>
-      <v-stepper-step step="1" editable :complete="el > 1">Name</v-stepper-step>
+      <v-stepper-step step="1" editable>Name</v-stepper-step>
       <v-divider></v-divider>
-      <v-stepper-step step="2" editable :complete="el > 2">Email</v-stepper-step>
+      <v-stepper-step step="2" editable>Email</v-stepper-step>
       <v-divider></v-divider>
-      <v-stepper-step step="3" editable :complete="el > 3">Password</v-stepper-step>
+      <v-stepper-step step="3" editable>Password</v-stepper-step>
     </v-stepper-header>
     <v-stepper-items>
       <v-stepper-content step="1">
@@ -17,7 +17,6 @@
                   label="Name"
                   v-model="name"
                   :rules="nameRules"
-                  required                  
                 >
                 </v-text-field>
               </v-flex>
@@ -29,21 +28,19 @@
 
       <v-stepper-content step="2">
         <v-card height="300px">
-          <v-form v-model="validEmail" ref="form" lazy-validation v-on:submit.prevent>
+          <v-form v-model="validEmail" ref="form" v-on:submit.prevent>
             <v-layout row justify-center>
               <v-flex xs8>
                 <v-text-field
                   label="Email"
                   v-model="email"
                   :rules="nameRules"
-                  required                  
                 >
                 </v-text-field>
                 <v-text-field
                   label="Retype your email"
                   v-model="email2"
                   :rules="emailConfirmRules"
-                  required                  
                 >
                 </v-text-field>
               </v-flex>
@@ -64,21 +61,15 @@
                   v-model="pass"
                   :rules="passRules"
                   :counter="10"
-                  required
-                  :append-icon="p1 ? 'visibility' : 'visibility_off'"
-                  :append-icon-cb="() => (p1 = !p1)"
-                  :type="p1 ? 'password' : 'text'"                  
+                  :type="'password'"
                 >
                 </v-text-field>
                 <v-text-field
-                  label="Please type your password again"
+                  label="Confirm your password"
                   v-model="pass2"
                   :rules="passConfirmRules"
                   :counter="10"
-                  required
-                  :append-icon="p2 ? 'visibility' : 'visibility_off'"
-                  :append-icon-cb="() => (p2 = !p2)"
-                  :type="p2 ? 'password' : 'text'"
+                  :type="'password'"
                   >
                 </v-text-field>
                 <v-alert v-model="badDataAlert" type="error">
@@ -93,17 +84,22 @@
         <v-btn flat  @click.native="el = 2">Back</v-btn>
       </v-stepper-content>
     </v-stepper-items>
-  </v-stepper>  
+  </v-stepper>
 </template>
 
 <script>
-const apiURL = 'http://localhost:3131/validate/signup'
+import { mapGetters } from 'vuex'
+let api // Need to find a way to turn all this into a function
+if (process.env.NODE_ENV === 'dev') {
+  api = 'http://localhost:3000/'
+} else {
+  api = 'https://shielded-stream-75107.herokuapp.com/'
+}
+const signupAPI = api
 export default {
   data () {
     return {
       el: 0,
-      p1: true,
-      p2: true,
       validName: false,
       name: '',
       nameRules: [
@@ -136,21 +132,34 @@ export default {
   },
   methods: {
     validateSignup: function (e) {
-      fetch(apiURL + encodeURIComponent('?name=' + this.name + '&email=' + this.email + '&password=' + this.pass), {
-        method: 'POST'
+      fetch(signupAPI + 'members', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'X-CSRF-Token': this.token
+        },
+        body: JSON.stringify({ name: this.name, email: this.email, email2: this.email2, password: this.pass, password2: this.pass2 })
       })
         .then(res => res.json())
-        .then(res => console.log(res.errors))
         .then(res => {
-          if (res.errors) {
-            this.errors.push(res.errors)
+          if (res['Status'] !== 'Member Created') {
+            this.errors.push(res['Errors'])
           } else {
-            // redirect to signup URL and save user values to vuex store
+            // redirect to welcome URL and save user values to vuex store
             this.errors = []
+            this.pass = ''
+            this.pass2 = ''
+            this.email = ''
+            this.email2 = ''
+            this.name = ''
+            this.$router.push('/welcome')
           }
         })
     }
-  }
+  },
+  computed: mapGetters({
+    token: 'curCSRFToken'
+  })
 }
 </script>
 
