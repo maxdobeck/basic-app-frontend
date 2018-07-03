@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=dev)](https://travis-ci.org/maxdobeck/scheduler-frontend)
+[![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=master)](https://travis-ci.org/maxdobeck/scheduler-frontend)
+
 # Scheduler-Frontend
 
 > Frontend Vue.js app.
