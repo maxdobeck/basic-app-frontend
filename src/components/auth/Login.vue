@@ -40,8 +40,8 @@
 <script>
 import { mapGetters } from 'vuex'
 let api // Need to find a way to turn all this into a function
-if (process.env.NODE_ENV === 'test') {
-  api = 'http://localhost:3000/'
+if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
+  api = 'http://localhost:3030/'
 } else {
   api = 'https://shielded-stream-75107.herokuapp.com/'
 }
@@ -65,6 +65,7 @@ export default {
   methods: {
     loginMember: function (e) {
       let self = this
+      let headerToken
       fetch(apiURL, {
         method: 'POST',
         credentials: 'include',
@@ -74,7 +75,7 @@ export default {
         body: JSON.stringify({email: this.email, password: this.password})
       })
         .then(function (response) {
-          self.setCSRFToken(response.headers.get('X-CSRF-Token'))
+          headerToken = response.headers.get('X-CSRF-Token')
           return response.json()
         })
         .then(response => {
@@ -85,6 +86,7 @@ export default {
             // redirect to signup URL and save user values to vuex store
             console.log(response['ID'])
             this.errors = []
+            self.setCSRFToken(headerToken)
             this.password = ''
             this.logMemberIn()
             this.setMemberId(response['ID'])
