@@ -8,17 +8,48 @@ install:
 script:
 - yarn lint
 - yarn build
+
 jobs:
   include:
-  - stage: deploy to dev
-    node_js: '8'
-    script: skip
+  #- stage: deploy to dev
+  #  node_js: '8'
+  #  script: skip
+  #  deploy:
+  #    provider: heroku
+  #    on: dev
+  #    app:
+  #      dev: secret-everglades-78583
+  #    api_key:
+  #        secure: "iQFw6d3bhO8o7um9hHOOClFrAIwCi6gxO8S85vFVM1lolVFEr5G109vY/K+F0/bQY1VtD8cdIOIMkX+B7J7zsmCBtkGq9lv/JOK9ezvDlnvGlCjYJCmBEIgIqFsF/4Uk21oHB+Al9hKGX2UZNREQlifx0Cjs74h/PEOaZ3Rm9+wKkvvpLSZxHv3C7APP2MxrdNJwuT2Z1BYWTEThz5EfPHbddqMGlDXlSZncCk3MnW9t1Owq59sE9pDOgztl3mvYYUDlNnThbZcQcL+eqcCrbulnl7vCddmie+vEDEFocRL0tZasGUV9SNKkBBO+i5Z1tBAFXPqxXUGhNL+6GOSwdcYHFXJ9suWB6ejjVe27MNGXL2LZjaiJB6COd3yfNd5OljD/kbw+qaulgwptGJO044sMtj+KiApbkTTioo+qmT2NrCqF5eqp1zKfJM8J77kLTfnpRNxC+4yPvbmayq9QbceIXh+lYc4zOryzuCGlsZEkoC3nUrWrn4ftfF8+kKQj2zsmkumGS6NJNhziU5yxyXzZ+kfg8cLwNQ7DIYU6ECOFqPsLRKKD9oK5lxazUZC0N6S33/xrsaeV41o3gdQQh7LKJ27OJaFfXuxUin2rK9LG5TxcwfeBADfPUbXqZvzqSin6jMhvlx7EeIwvkeoHtv7PSt5xM0kgP63PU9e5TwI="
+  - stage: deploy to s3 dev
     deploy:
-      provider: heroku
+      node_js: '8'
+      script:
+      - yarn build
+      provider: s3
       on: dev
-      on: master
-      app:
-        dev: secret-everglades-78583
-        master: secret-everglades-78583
-      api_key:
-          secure: "iQFw6d3bhO8o7um9hHOOClFrAIwCi6gxO8S85vFVM1lolVFEr5G109vY/K+F0/bQY1VtD8cdIOIMkX+B7J7zsmCBtkGq9lv/JOK9ezvDlnvGlCjYJCmBEIgIqFsF/4Uk21oHB+Al9hKGX2UZNREQlifx0Cjs74h/PEOaZ3Rm9+wKkvvpLSZxHv3C7APP2MxrdNJwuT2Z1BYWTEThz5EfPHbddqMGlDXlSZncCk3MnW9t1Owq59sE9pDOgztl3mvYYUDlNnThbZcQcL+eqcCrbulnl7vCddmie+vEDEFocRL0tZasGUV9SNKkBBO+i5Z1tBAFXPqxXUGhNL+6GOSwdcYHFXJ9suWB6ejjVe27MNGXL2LZjaiJB6COd3yfNd5OljD/kbw+qaulgwptGJO044sMtj+KiApbkTTioo+qmT2NrCqF5eqp1zKfJM8J77kLTfnpRNxC+4yPvbmayq9QbceIXh+lYc4zOryzuCGlsZEkoC3nUrWrn4ftfF8+kKQj2zsmkumGS6NJNhziU5yxyXzZ+kfg8cLwNQ7DIYU6ECOFqPsLRKKD9oK5lxazUZC0N6S33/xrsaeV41o3gdQQh7LKJ27OJaFfXuxUin2rK9LG5TxcwfeBADfPUbXqZvzqSin6jMhvlx7EeIwvkeoHtv7PSt5xM0kgP63PU9e5TwI="
+      access_key_id: "AKIAIMTCJ264OCT3MDRA"
+      secret_access_key: 
+        secure: "C0uPZJMMjIEPkeI0IrQ3Jp9yrHxiCXCfjfFRzALV2BDYO1VSUOi907I1FxIhLL5UNusJQlcwGePLPMJ+Lu3k8aldvc+BUClmWfXeeqz/pk2qTU6CEf03px+6izzJx2FWxZx8pZ6q2LZC6yiIZCgmPvC2cjYRoLrsehML+UHJ9nox2l44wPcWBMCXBSwsIGF3CjSMs+P5cMdu0qC7sddZ4RGl/Y403eP43imW2IYdJ9BvMSTwNBueMeTySVQcN6KzJiwCd/rIVI+9DEvQI/qk4jUm6qgkCMKAOAJZ+HacAuHU6j80xf+U3+aV1Dkbq5SD770S6Y02dxLlXAoMcEyWskz1bugfqW9Mp7hlp//fZBrGeHNF9wTFLAGfDefabYWj6xn4nNrjbJaqWgOwY8j4g/G2Kl58c2DJ54w7ijiSlCQDNrFkwTd+XMZ2/7BmqEF01eJOwhigsu+nzJWyS31O8K5Dl4IB2wGSasUs5p94t+y87LqcGfSipN4jHt9HLCfHOV1l5LCM81sgjdiJtpi8qaMdsWF7olnHbWciw1E7L7Xz24Mwxtrba2WIaZqXh2QIy18NSJcfRSaI9jCXkVTRNOzgD3IVPHcmc7HYf/X5CU8nUJA3zSXNCzKGrTfnvbTR8Np+XJLQKPhq+6hIa6O/1lnBxHZqI+eYEhl3f4I8/nY="
+      # deploy to http://s3-sih-test.s3-website-us-west-1.amazonaws.com
+      bucket: "s3-sih-test"
+      region: "us-west-1"
+      skip_cleanup: true
+      local_dir: dist
+      cache_control: "max-age=86400"
+  - stage: deploy to production
+    deploy:
+      on: prod
+      node_js: '8'
+      script:
+      - yarn build
+      provider: s3
+      access_key_id: "AWS Access IAM Access Key"
+      secret_access_key: 
+        secure: "travis secure <awssecret access key>"
+      # deploy to http://s3-sih-test.s3-website-us-west-1.amazonaws.com
+      bucket: "schedulingishard.com"
+      region: "us-west-1"
+      skip_cleanup: true
+      local_dir: dist
+      cache_control: "max-age=86400"

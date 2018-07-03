@@ -6,6 +6,7 @@ import Logout from '@/components/auth/Logout'
 import Signup from '@/components/auth/Signup'
 import Home from '@/components/Home'
 import Schedules from '@/components/Schedules'
+import Welcome from '@/components/Welcome'
 
 Vue.use(Router)
 
@@ -23,13 +24,10 @@ export default new Router({
   mode: 'history',
   routes: [
     { path: '/', name: 'Home', component: Home },
-    { path: '/schedules',
-      name: 'Schedules',
-      component: Schedules,
-      beforeEnter: checkAuth
-    },
+    { path: '/schedules', name: 'Schedules', component: Schedules, beforeEnter: checkAuth },
     { path: '/login', name: 'Login', component: Login },
     { path: '/logout', name: 'Logout', component: Logout },
-    { path: '/signup', name: 'Signup', component: Signup }
+    { path: '/signup', name: 'Signup', component: Signup },
+    { path: '/welcome', name: 'Welcome', component: Welcome }
   ]
 })
