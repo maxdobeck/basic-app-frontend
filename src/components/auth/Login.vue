@@ -27,10 +27,10 @@
     </v-layout>
     <v-layout row justify-center>
       <v-btn
-        @click="loginMember"
-        :disabled="!valid"
-      >
-        Login
+        @click="clickHandler"
+        :disabled="loading"
+        :loading="loading"
+      >Login
       </v-btn>
     </v-layout>
   </v-form>
@@ -49,6 +49,7 @@ const apiURL = api + 'login'
 export default {
   data () {
     return {
+      loading: false,
       email: '',
       emailRules: [
         v => !!v || 'Email is required',
@@ -63,9 +64,13 @@ export default {
     }
   },
   methods: {
+    clickHandler: function (e) {
+      this.loginMember()
+    },
     loginMember: function (e) {
       let self = this
       let headerToken
+      this.loading = true
       fetch(apiURL, {
         method: 'POST',
         credentials: 'include',
@@ -81,7 +86,8 @@ export default {
         .then(response => {
           console.log(response)
           if (response['Status'] !== 'OK') {
-            this.errors = response['Status']
+            self.errors = response['Status']
+            self.loading = false
           } else {
             // redirect to signup URL and save user values to vuex store
             console.log(response['ID'])
@@ -91,6 +97,7 @@ export default {
             this.logMemberIn()
             this.setMemberId(response['ID'])
             this.$router.push('/')
+            self.loading = false
           }
         })
     },

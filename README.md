@@ -11,7 +11,7 @@ use `yarn or npm`
 # install dependencies
 yarn install
 
-# serve with hot reload at localhost:3030
+# serve with hot reload
 yarn start
 
 # build for production with minification

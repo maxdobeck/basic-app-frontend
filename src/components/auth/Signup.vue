@@ -80,7 +80,12 @@
             </v-layout>
           </v-form>
         </v-card>
-        <v-btn color="primary" :disabled="!validPassword" @click.native="validateSignup">Submit</v-btn>
+        <v-btn color="primary"
+          :disabled="!validPassword"
+          @click.native="clickHandler"
+          :loading="loading"
+        >Submit
+        </v-btn>
         <v-btn flat  @click.native="el = 2">Back</v-btn>
       </v-stepper-content>
     </v-stepper-items>
@@ -127,11 +132,18 @@ export default {
         v => v === this.pass || 'Passwords must match'
       ],
       errors: [],
-      badDataAlert: false
+      badDataAlert: false,
+      loading: false
     }
   },
   methods: {
+    clickHandler: function (e) {
+      this.validateSignup()
+      this.loader = 'loading'
+    },
     validateSignup: function (e) {
+      let self = this
+      this.loading = true
       fetch(signupAPI + 'members', {
         method: 'POST',
         credentials: 'include',
@@ -143,7 +155,8 @@ export default {
         .then(res => res.json())
         .then(res => {
           if (res['Status'] !== 'Member Created') {
-            this.errors.push(res['Errors'])
+            self.errors.push(res['Errors'])
+            self.loading = false
           } else {
             // redirect to welcome URL and save user values to vuex store
             this.errors = []
@@ -152,6 +165,7 @@ export default {
             this.email = ''
             this.email2 = ''
             this.name = ''
+            self.loading = false
             this.$router.push('/welcome')
           }
         })
