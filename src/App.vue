@@ -30,10 +30,12 @@
 <script>
 import { mapGetters } from 'vuex'
 let api // Need to find a way to turn all this into a function
-if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
-  api = 'http://localhost:3030/'
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'dev') {
+  api = process.env.DEV_API
+} else if (process.env.NODE_ENV === 'test') {
+  api = process.env.TEST_API
 } else {
-  api = 'https://shielded-stream-75107.herokuapp.com/'
+  api = process.env.PROD_API
 }
 const apiURL = api + 'csrftoken'
 export default {

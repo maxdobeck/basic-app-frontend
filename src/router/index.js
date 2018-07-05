@@ -10,14 +10,47 @@ import Welcome from '@/components/Welcome'
 
 Vue.use(Router)
 
-function checkAuth (to, from, next) {
+async function checkAuth (to, from, next) {
   // if user is logged in, move to next route
-  if (store.getters.logInStatus === true) {
+  let proceed
+  await validSession().then(valid => {
+    proceed = valid
+    console.log('***--->', valid)
+  })
+  console.log('Proceed?', proceed)
+  if (proceed === true) {
     next()
   // else if user is not logged in, go to login page
   } else {
     next('/login')
   }
+}
+
+async function validSession () {
+  let valid = true
+  let token = store.getters.curCSRFToken
+  let api // Need to find a way to turn all this into a function
+  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'dev') {
+    api = process.env.DEV_API
+  } else if (process.env.NODE_ENV === 'test') {
+    api = process.env.TEST_API
+  } else {
+    api = process.env.PROD_API
+  }
+  const apiURL = api + 'validsession'
+  let response = await fetch(apiURL, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      'X-CSRF-Token': token
+    }
+  })
+  let status = await response.status
+  if (status !== 200) {
+    valid = false
+  }
+  console.log('Status: ', status)
+  return valid
 }
 
 export default new Router({
