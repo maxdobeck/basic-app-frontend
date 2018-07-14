@@ -39,7 +39,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-let api // Need to find a way to turn all this into a function
+let api // move this whole thing into a vuex action
 if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'dev') {
   api = process.env.DEV_API
 } else if (process.env.NODE_ENV === 'test') {
@@ -104,8 +104,12 @@ export default {
             this.setMemberEmail(response['Email'])
             this.setMemberName(response['Name'])
             this.setMemberId(response['ID'])
-            this.$router.push('/')
             self.loading = false
+            if (this.$route.query.redirect !== undefined) {
+              this.$router.push(this.$route.query.redirect)
+            } else {
+              this.$router.push('/')
+            }
           }
         })
     },
