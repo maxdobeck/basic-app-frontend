@@ -9,37 +9,20 @@ script:
 - yarn lint
 - yarn build
 
-jobs:
-  include:
-  - stage: deploy to s3 test env
-    if: branch = dev
-    script: yarn buildTest
-    deploy:
-      node_js: '8'
-      provider: s3
-      on: dev
-      access_key_id: "AKIAIMTCJ264OCT3MDRA"
-      secret_access_key: 
-        secure: "C0uPZJMMjIEPkeI0IrQ3Jp9yrHxiCXCfjfFRzALV2BDYO1VSUOi907I1FxIhLL5UNusJQlcwGePLPMJ+Lu3k8aldvc+BUClmWfXeeqz/pk2qTU6CEf03px+6izzJx2FWxZx8pZ6q2LZC6yiIZCgmPvC2cjYRoLrsehML+UHJ9nox2l44wPcWBMCXBSwsIGF3CjSMs+P5cMdu0qC7sddZ4RGl/Y403eP43imW2IYdJ9BvMSTwNBueMeTySVQcN6KzJiwCd/rIVI+9DEvQI/qk4jUm6qgkCMKAOAJZ+HacAuHU6j80xf+U3+aV1Dkbq5SD770S6Y02dxLlXAoMcEyWskz1bugfqW9Mp7hlp//fZBrGeHNF9wTFLAGfDefabYWj6xn4nNrjbJaqWgOwY8j4g/G2Kl58c2DJ54w7ijiSlCQDNrFkwTd+XMZ2/7BmqEF01eJOwhigsu+nzJWyS31O8K5Dl4IB2wGSasUs5p94t+y87LqcGfSipN4jHt9HLCfHOV1l5LCM81sgjdiJtpi8qaMdsWF7olnHbWciw1E7L7Xz24Mwxtrba2WIaZqXh2QIy18NSJcfRSaI9jCXkVTRNOzgD3IVPHcmc7HYf/X5CU8nUJA3zSXNCzKGrTfnvbTR8Np+XJLQKPhq+6hIa6O/1lnBxHZqI+eYEhl3f4I8/nY="
-      # deploy to http://s3-sih-test.s3-website-us-west-1.amazonaws.com
-      bucket: "s3-sih-test"
-      region: "us-west-1"
-      skip_cleanup: true
-      local_dir: dist
-      cache_control: "max-age=20"
-  - stage: deploy to production
-    if: branch = prod
-    script: yarn build
-    deploy:
-      on: prod
-      node_js: '8'
-      provider: s3
-      access_key_id: "AKIAJNSFST7AKQ6CU3KA"
-      secret_access_key: 
-        secure: "hJJAYnyvSvY7W3kODzLpUxI/uq8ipjHoETWfl7O0nBgKAA5S1BSuNpcWgWFfSntwQv8L4sEddb3xpskMZzvGvP/+3PYoQt6bCHAdWfjOcZnG6FhC8rjU8AhwfXCmZkh4UfMiE8n3kECqy6G+LPUXzGl1XX61DUjViEspxlf5AKfQw72WKohE2XrOecWQ+mPUYR8A4f/8CON7st1CcPMAx5NQWpYhMivgmw37kNNgJlI3Z0wrkcRZ83+B/Oyd6H+XEu+/7FwdkEryBjFDKIwK2rtFUQajqnDv6K4GFy2POOnpL90zqllxpbCWa9DLmkDKma5Qsm3+ZeX8DDW0OWfCzSPH4lDXn+HXwxk1TudGYpVZyws9TbWViY3hrrcK89p5YiEeYyFiyipIWoYTyStIUKh9OmrQGK0KP+t2cz/Fp7intcZ/El80NNEsQHwuSlIAZtKRUz1K87cG94npXbumS9FDxgnyegmtwU4OpKby72oLu+u5+zCfG95vZpJZWB0ZV3FNJkkD3TNOr/0XtajLbn2J7t860nFy5yTMY7eh0Nk411e7TuOPO0PxmNp1pYoEh+DjRrmKMGF973kd24R8uObgn4MVbSk5MejjVJoJVYPbA37eI7yzE7iENZiuIiyFXxT/Cj1ApNlLFByA7hV+vI6NuHLF9A2C2Tn/RNjxdV8="
-      # deploy to http://s3-sih-test.s3-website-us-west-1.amazonaws.com
-      bucket: "schedulingishard.com"
-      region: "us-east-2"
-      skip_cleanup: true
-      local_dir: dist
-      cache_control: "max-age=43200"
+# jobs:
+#  include:
+  # - stage: deploy to production
+    # if: branch = prod
+    # script: yarn build
+    # deploy:
+    #  on: prod
+    #  node_js: '8'
+    #  provider: s3
+    #  access_key_id: "your access key here"
+    #  secret_access_key: 
+        secure: "encrypt your key with travis here"
+    #  bucket: "schedulingishard.com"
+    #  region: "us-east-2"
+    #  skip_cleanup: true
+    #  local_dir: dist
+    #  cache_control: "max-age=43200"
