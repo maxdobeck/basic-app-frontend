@@ -11,6 +11,7 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>
+        <v-btn :ripple="false" flat raised to="/settings" v-if="loggedIn" id="settings">Settings</v-btn>
         <v-btn :ripple="false" flat raised to="/signup" v-if="!loggedIn" id="signup">Sign Up</v-btn>
         <v-btn :ripple="false" flat raised to="/login" v-if="!loggedIn" id="logInOut">Log In</v-btn>
         <v-btn @click="logMemberOut" :ripple="false" flat raised v-if="loggedIn" id="logInOut">Log Out</v-btn>
@@ -56,7 +57,9 @@ export default {
   },
   computed: mapGetters({
     token: 'curCSRFToken',
-    loggedIn: 'logInStatus'
+    loggedIn: 'logInStatus',
+    memberName: 'memberName',
+    memberEmail: 'memberEmail'
   }),
   created:
     function () {

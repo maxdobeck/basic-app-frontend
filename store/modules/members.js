@@ -6,7 +6,9 @@
   const state = {
     loggedIn: false,
     csrf_token: '',
-    memberId: ''
+    memberId: '',
+    memberName: '',
+    memmberEmail: ''
   }
   
   const mutations = {
@@ -17,10 +19,19 @@
       state.loggedIn = true
     },
     logMemberOut(state) {
-      state.loggedIn = false
+      state.loggedIn = false,
+      state.memberId = '',
+      state.memberName = '',
+      state.memberEmail = ''
     },
     setMemberId(state, id) {
       state.memberId = id
+    },
+    setMemberName(state, name) {
+      state.memberName = name
+    },
+    setMemberEmail(state, email) {
+      state.memberEmail = email
     }
   }
 
@@ -36,13 +47,21 @@
     },
     setMemberId ({commit, state}, id) {
       commit('setMemberId', id)
+    },
+    setMemberName ({commit, state}, name) {
+      commit('setMemberName', name)
+    },
+    setMemberEmail ({commit, state}, email) {
+      commit('setMemberEmail', email)
     }
   }
   
   const getters = {
      logInStatus: state => state.loggedIn,
      curCSRFToken: state => state.csrf_token,
-     curMemberId: state => state.memberId
+     curMemberId: state => state.memberId,
+     memberName: state => state.memberName,
+     memberEmail: state => state.memberEmail
     
   }
 

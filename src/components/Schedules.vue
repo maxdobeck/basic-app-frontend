@@ -1,6 +1,8 @@
 <template>
   <v-container>
     <h1>Schedules</h1>
+    <p>Create, delete, or rename a schedule.</p>
+    <p>Enroll users to your schedules via email, text message, or with their account.</p>
   </v-container>
 </template>
 
