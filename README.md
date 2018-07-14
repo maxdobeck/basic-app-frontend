@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=dev)](https://travis-ci.org/maxdobeck/scheduler-frontend)
+[![Build Status](https://travis-ci.org/maxdobeck/scheduler-frontend.svg?branch=dev)](https://travis-ci.org/maxdobeck/basic-app-frontend)
 
 # Scheduler-Frontend
 
