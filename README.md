@@ -22,3 +22,4 @@ yarn build
 This app was built in parallel with https://github.com/maxdobeck/gatekeeper.  This is essentially a Single Page Application that makes API calls with the Fetch command to get the data needed.
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
