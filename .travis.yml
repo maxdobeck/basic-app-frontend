@@ -20,7 +20,7 @@ script:
     #  provider: s3
     #  access_key_id: "your access key here"
     #  secret_access_key: 
-        secure: "encrypt your key with travis here"
+    #    secure: "encrypt your key with travis here"
     #  bucket: "schedulingishard.com"
     #  region: "us-east-2"
     #  skip_cleanup: true
